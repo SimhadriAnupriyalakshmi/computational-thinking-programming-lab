@@ -1,0 +1,60 @@
+Comparison of list-based and generator-based processing based on execution time and memory usage.
+# Experiment 04 – List vs Generator
+
+## Aim
+Compare list-based processing and generator-based processing for a large dataset in terms of execution time and memory usage.
+
+## Algorithm / Procedure
+1. Create a large dataset.
+2. Process the dataset using a list.
+3. Process the same dataset using a generator.
+4. Measure execution time.
+5. Compare memory usage.
+6. Display the results.
+
+## Program
+import time
+import sys
+
+n = 100000
+
+
+# List processing
+start = time.time()
+
+list_data = [i * i for i in range(n)]
+
+list_time = time.time() - start
+
+
+# Generator processing
+start = time.time()
+
+generator_data = (i * i for i in range(n))
+
+generator_time = time.time() - start
+
+
+print("List Processing Time:",
+      round(list_time, 6), "seconds")
+
+print("Generator Creation Time:",
+      round(generator_time, 6), "seconds")
+
+print("List Memory:",
+      sys.getsizeof(list_data), "bytes")
+
+print("Generator Memory:",
+      sys.getsizeof(generator_data), "bytes")
+
+## Output
+List Processing Time: 0.00845 seconds
+Generator Creation Time: 0.000135 seconds
+List Memory: 800984 bytes
+Generator Memory: 200 bytes
+
+## Observation
+Generators use less memory because values are produced one at a time.
+
+## Result
+List-based and generator-based processing were successfully compared based on execution time and memory usage.
