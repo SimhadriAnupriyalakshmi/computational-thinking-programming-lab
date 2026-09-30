@@ -1,0 +1,74 @@
+Development of reusable Stack and Queue implementations using Python type hints and dataclasses.
+# Experiment 03 – Stack and Queue
+
+## Aim
+Develop a reusable Python package implementing Stack and Queue using type hints and dataclasses.
+
+## Algorithm / Procedure
+1. Create a Stack class using a dataclass.
+2. Implement push and pop operations.
+3. Create a Queue class using a dataclass.
+4. Implement enqueue and dequeue operations.
+5. Test both data structures.
+
+## Program
+from dataclasses import dataclass
+from typing import List
+
+
+@dataclass
+class Stack:
+    items: List[int]
+
+    def push(self, item: int) -> None:
+        self.items.append(item)
+
+    def pop(self) -> int:
+        return self.items.pop()
+
+
+@dataclass
+class Queue:
+    items: List[int]
+
+    def enqueue(self, item: int) -> None:
+        self.items.append(item)
+
+    def dequeue(self) -> int:
+        return self.items.pop(0)
+
+
+# Stack
+stack = Stack([])
+
+stack.push(10)
+stack.push(20)
+stack.push(30)
+
+print("Stack:", stack.items)
+print("Popped:", stack.pop())
+print("Stack after pop:", stack.items)
+
+
+# Queue
+queue = Queue([])
+
+queue.enqueue(40)
+queue.enqueue(50)
+queue.enqueue(60)
+
+print("\nQueue:", queue.items)
+print("Dequeued:", queue.dequeue())
+print("Queue after dequeue:", queue.items)
+
+## Output
+Stack: [10, 20, 30]
+Popped: 30
+Stack after pop: [10, 20]
+
+Queue: [40, 50, 60]
+Dequeued: 40
+Queue after dequeue: [50, 60]
+
+## Result
+Stack and Queue were successfully implemented using Python dataclasses and type hints.
